@@ -206,9 +206,24 @@
                                  HeightRequest="100"
                                 BackgroundColor="red">
                    <mct:StateContainer.StateViews>
-                       <VerticalStackLayout mct:StateView.StateKey="Success"
-                                            VerticalOptions="Fill"
-                                   BackgroundColor="green" ></VerticalStackLayout>
+                       <RefreshView mct:StateView.StateKey="Success" VerticalOptions="FillAndExpand">
+                           <ScrollView>
+                                <Label Text="hello world"></Label>
+                           </ScrollView>
+                       </RefreshView>
+                </mct:StateContainer.StateViews>
+            </VerticalStackLayout>
+            <VerticalStackLayout mct:StateContainer.CurrentState="{Binding RefreshState}"
+                                 x:Name="RefreshStateRoot"
+                                 HeightRequest="100"
+                                BackgroundColor="yellow">
+                   <mct:StateContainer.StateViews>
+                       <RefreshView mct:StateView.StateKey="Success" VerticalOptions="FillAndExpand"
+                                    HeightRequest="{Binding Height, Source={x:Reference RefreshStateRoot }}">
+                           <ScrollView>
+                                <Label Text="hello world "></Label>
+                           </ScrollView>
+                       </RefreshView>
                 </mct:StateContainer.StateViews>
             </VerticalStackLayout>
         </VerticalStackLayout>
