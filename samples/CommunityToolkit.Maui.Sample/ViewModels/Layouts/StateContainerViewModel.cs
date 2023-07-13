@@ -6,7 +6,7 @@ namespace CommunityToolkit.Maui.Sample.ViewModels.Layouts;
 public partial class StateContainerViewModel : BaseViewModel
 {
 	[ObservableProperty]
-	string? currentState, gridState, noAnimateState, notFoundState, fullPageState;
+	string? currentState, gridState, noAnimateState, notFoundState, fullPageState, refreshState;
 
 	[ObservableProperty, NotifyCanExecuteChangedFor(nameof(ToggleGridStateCommand))]
 	bool canGridStateChange = true;
@@ -55,6 +55,14 @@ public partial class StateContainerViewModel : BaseViewModel
 	{
 		StateKey.Loading => null,
 		_ => StateKey.Loading
+	};
+
+	[RelayCommand]
+	void ToggleRefreshState() => RefreshState = RefreshState switch
+	{
+		StateKey.Success => null,
+		_ => StateKey.Success
+
 	};
 
 	static class StateKey

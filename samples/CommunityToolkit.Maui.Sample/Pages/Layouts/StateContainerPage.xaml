@@ -200,6 +200,17 @@
                 </Border>
 
             </VerticalStackLayout>
+
+            <Button Command="{Binding ToggleRefreshStateCommand}" Text="Toggle Refresh State"></Button>
+            <VerticalStackLayout mct:StateContainer.CurrentState="{Binding RefreshState}"
+                                 HeightRequest="100"
+                                BackgroundColor="red">
+                   <mct:StateContainer.StateViews>
+                       <VerticalStackLayout mct:StateView.StateKey="Success"
+                                            VerticalOptions="Fill"
+                                   BackgroundColor="green" ></VerticalStackLayout>
+                </mct:StateContainer.StateViews>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </pages:BasePage>
